@@ -116,6 +116,7 @@ body{
     width: 80vh;
 }
 
+/* Mobile styles */
 @media screen and (max-width: 600px) {
     nav {
         flex-direction: column;
