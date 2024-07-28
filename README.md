@@ -1,42 +1,47 @@
-This project is a web application built with Node.js and Express. It uses EJS as the templating engine and includes functionalities for user management, listing management, and reviews. The project is structured to follow the MVC (Model-View-Controller) pattern. It is deployed using Render which can be accessed using https://major-project-kl3p.onrender.com/listings. It leverages cloud-platform services of cloudinary.
+This project is a web application built with Node.js and Express. It uses EJS as the templating engine and includes functionalities for user management, listing management, and reviews. The project is structured to follow the MVC (Model-View-Controller) pattern. It is deployed using [Render](https://major-project-kl3p.onrender.com/listings). It leverages cloud-platform services of cloudinary.
 
-Table of Contents
 
-->Installation
-->Usage
-->Project Structure
-->Routes
-->Models
-->Controllers
-->Views
-->Middleware
-->Utils
-->License
+**Table of Contents**
 
-1. Installation:-
+- Installation
+- Usage
+- Project Structure
+- Routes
+- Models
+- Controllers
+- Views
+- Middleware
+- Utils
+- License
+<br>
 
-git clone https://github.com/yourusername/deta.git
-cd deta
+**1. Installation:-**
 
-2. Install dependencies:
+- git clone https://github.com/yourusername/delta.git
+- cd delta
 
-npm install
+**2. Install dependencies:**
 
-3. Set up environment variables:
-Create a .env file in the root directory and add the necessary environment variables.
-Refer to .env.example for the required variables.
+- npm install
 
-4. Start the application:
+**3. Set up environment variables:**
 
-npm start
+- Create a .env file in the root directory and add the necessary environment variables.<br>
+- Refer to .env.example for the required variables.
 
-5. Usage
+**4. Start the application:**
 
-Once the application is running, you can access it at http://localhost:8080. The app allows users to sign up, log in, create listings, and post reviews.
+- npm start
 
-Project Structure:-
+**5. Usage**
 
-deta/
+- Once the application is running, you can access it at http://localhost:8080. The app allows users to sign up, log in, create listings, and post reviews.
+
+
+**Project Structure:-**
+
+```
+delta/
 ├── controller/
 │   ├── listing.js
 │   ├── review.js
@@ -83,6 +88,4 @@ deta/
 ├── package.json
 ├── package-lock.json
 └── schema.js
-
-License:-
-This project is licensed under the MIT License.
+```
