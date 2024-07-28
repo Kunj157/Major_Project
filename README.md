@@ -1,4 +1,10 @@
-This project is a web application built with Node.js and Express. It uses EJS as the templating engine and includes functionalities for user management, listing management, and reviews. The project is structured to follow the MVC (Model-View-Controller) pattern. It is deployed using [Render](https://major-project-kl3p.onrender.com/listings). It leverages cloud-platform services of cloudinary.
+**Description**
+
+- It is a booking platform that has many different filters for one to choose a property that suits the needs.You can also choose to filter your stay by nightly or monthly rates.
+- This application enables users to rent the places such as hotels, restaurants all across the globe, post the reviews regarding those places as well as posting their properties for rental purposes with detailed description.
+- This project is a web application built with Node.js and Express. It uses EJS as the templating engine and includes functionalities for user management, listing management, and reviews and MongoDB for database interactions. The project is structured to follow the MVC (Model-View-Controller) pattern. It is deployed using [Render](https://major-project-kl3p.onrender.com/listings). It leverages cloud-platform services of cloudinary.
+- It supports user-friendly responsive UI for enhanced user-experience built with the help of Bootstrap.
+- Implemented User-Authentication and Authorization using PassportJS middleware.
 
 
 **Table of Contents**
@@ -12,7 +18,6 @@ This project is a web application built with Node.js and Express. It uses EJS as
 - Views
 - Middleware
 - Utils
-- License
 <br>
 
 **1. Installation:-**
