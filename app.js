@@ -65,10 +65,6 @@ const sessionOptions = {
   httpOnly: true,
 };
 
-// app.get("/", (req, res) => {
-//   res.send("Hi, I am root");
-// });
-
 app.use(session(sessionOptions));
 app.use(flash());
 app.use(passport.initialize());
@@ -84,13 +80,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get("/demouser", async (req, res) => {
-//   let fakeUser = new User({
-//     email: "student@gmail.com",
-//     username: "delta-student",
-//   });
-//   let registeredUser = await User.register(fakeUser, "helloworld");
-//   res.send(registeredUser);
+// app.get("/", (req, res) => {
+//   res.send("Hi, I am root");
 // });
 
 app.use("/listings", listingRouter);
@@ -103,16 +94,10 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went wrong" } = err;
-
-  // Set default status code if not provided
-  // statusCode = statusCode || 500;
-
-  // Send response
-  // res.status(statusCode).send(message);
-
   res.status(statusCode).render("error.ejs", { message });
 });
 
-app.listen(8080, () => {
-  console.log("server is listening to port 8080");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`server is listening at http://localhost:${port}`);
 });
