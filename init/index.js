@@ -1,8 +1,14 @@
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
+const User = require("../models/user.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
+
+const dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/wanderlust";
+
 main()
   .then(() => {
     console.log("Connected to DB");
@@ -12,17 +18,28 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
+  await initDB();
+  process.exit(0);
 }
 
 const initDB = async () => {
   await Listing.deleteMany({});
-  initData.data = initData.data.map((obj) => ({
-    ...obj,
-    owner: "66643bb34286b39711594aab",
+  
+  // Create a default user
+  await User.deleteMany({}); // Clear existing users
+  const defaultUser = new User({
+    email: "admin@example.com",
+    username: "admin"
+  });
+  const registeredUser = await User.register(defaultUser, "admin123");
+  
+  // Add the user as owner to all listings
+  initData.data = initData.data.map(listing => ({
+    ...listing,
+    owner: registeredUser._id,
   }));
+  
   await Listing.insertMany(initData.data);
-  console.log("Data was initalized");
+  console.log("Data was initialized");
 };
-
-initDB();

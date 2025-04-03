@@ -20,7 +20,8 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
-const dbUrl = process.env.ATLASDB_URL;
+const dbUrl = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/wanderlust";
+
 main()
   .then(() => {
     console.log("connected to DB");
@@ -49,7 +50,7 @@ const store = MongoStore.create({
   touchAfter: 24 * 3600,
 });
 
-store.on("error", () => {
+store.on("error", (err) => {
   console.log("ERROR in MONGO SESSION STORE", err);
 });
 
@@ -80,9 +81,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get("/", (req, res) => {
-//   res.send("Hi, I am root");
-// });
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
